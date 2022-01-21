@@ -1,6 +1,7 @@
 package com.spring.course.persitence.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categorias")
@@ -13,6 +14,10 @@ public class Categoria {
 
     private String descripcion;
     private Boolean estado;
+
+    @OneToMany(mappedBy = "categoria") //De UNA categoria a MUCHOS productos, mapeado por el atributo de categoria
+                                        //de tipo Categoria que esta en producto
+    private List<Producto> productos;
 
     public Integer getIdCategoria() {
         return idCategoria;

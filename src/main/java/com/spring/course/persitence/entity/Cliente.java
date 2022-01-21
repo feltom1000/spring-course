@@ -1,9 +1,7 @@
 package com.spring.course.persitence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -11,13 +9,14 @@ public class Cliente {
 
     @Id
     private String id;
-
     private String nombre;
     private String apellidos;
-    private Integer celular;
+    private Long celular;
     private String direccion;
 
     @Column(name = "correo_electronico")
     private String correoElectronico;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 }

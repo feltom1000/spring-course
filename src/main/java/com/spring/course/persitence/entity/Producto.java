@@ -27,6 +27,15 @@ public class Producto {
 
     private Boolean estado;
 
+    //Debo especificar las maneras de relacionar las diferentes tablas.
+    @ManyToOne //MUCHOS productos anidados en UNA categoria (ManyToOne)
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+        //El atributo que relaciona categoria con producto es id_categoria.
+                //insertable y updatable false significa que a travez de esta relacion no vamos a insertar ni
+                //actualizar una nueva categoria, para hacerlo hay que hacerlo por entity categoria. Esto simplemente
+                //servira para recuperar a que categoria pertenece un producto.
+    private Categoria categoria;
+
     public Integer getIdProducto() {
         return idProducto;
     }
