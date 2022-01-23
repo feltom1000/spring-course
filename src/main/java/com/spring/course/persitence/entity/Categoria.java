@@ -19,6 +19,7 @@ public class Categoria {
                                         //de tipo Categoria que esta en producto
     private List<Producto> productos;
 
+
     public Integer getIdCategoria() {
         return idCategoria;
     }
