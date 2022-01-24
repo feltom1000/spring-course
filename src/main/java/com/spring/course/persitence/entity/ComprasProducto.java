@@ -14,6 +14,8 @@ public class ComprasProducto {
     private Boolean estado;
 
     @ManyToOne
+    @MapsId("idCompra") //Cuando ComprasProducto se vaya a guardar en cascada va a saber a que PK de Compra
+                        // pertenece cada uno de sus productos
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
@@ -51,5 +53,21 @@ public class ComprasProducto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }
