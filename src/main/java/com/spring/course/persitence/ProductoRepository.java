@@ -5,6 +5,7 @@ import com.spring.course.domain.respository.ProductRepository;
 import com.spring.course.persitence.crud.ProductoCRUDRepository;
 import com.spring.course.persitence.entity.Producto;
 import com.spring.course.persitence.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,8 +16,11 @@ import java.util.Optional;
             // significa que la clase es un componente de Spring, @Repository, es especificar que clase de
             // component es.
 public class ProductoRepository implements ProductRepository {
+    @Autowired
     private ProductoCRUDRepository productoCRUDRepository;
+    @Autowired
     private ProductMapper mapper;
+    //Interactuo con la DB y me devuelve los objetos que yo necesito a travez de toProduct();
 
 
 //    public List<Producto> getAll(){
