@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 @Mapper(componentModel = "spring") //Le decimos al mapeador que vamos a modelar un componente de spring
 public interface CategoryMapper {
     @Mappings({
-            @Mapping(source = "idCategoria", target = "CategoryId"),
+            @Mapping(source = "idCategoria", target = "categoryId"),
             @Mapping(source = "descripcion", target = "category"),
             @Mapping(source = "estado", target = "active")
     })
