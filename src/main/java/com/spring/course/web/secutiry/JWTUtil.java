@@ -1,5 +1,6 @@
 package com.spring.course.web.secutiry;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,5 +18,21 @@ public class JWTUtil {
                 .signWith(SignatureAlgorithm.HS256, KEY).compact();
         //Estoy construyendo un JWTS(Jsonwebtoken), le seteo el user, lo obtengo, le pongo la hora de creacion
         //le pongo la hora de vencimiento, le asigno un cifrado de algoritmo, y le asigno una key.
+    }
+
+    public boolean validateToken(String token, UserDetails userDetails){
+        return userDetails.getUsername().equals(extractUsername(token)) && !isTokenExpired(token);
+    }
+
+    public String extractUsername(String token){
+        return getClaims(token).getSubject();
+    }
+
+    public boolean isTokenExpired(String token){
+        return getClaims(token).getExpiration().before(new Date());
+    }
+
+    private Claims getClaims(String token){
+        return Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody();
     }
 }
